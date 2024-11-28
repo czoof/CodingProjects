@@ -1,4 +1,3 @@
-//hi.
 //hangman
 //get word
 //make another string full of underlines eqivivlant to the length of word
