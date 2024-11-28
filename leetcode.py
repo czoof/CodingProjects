@@ -1,3 +1,5 @@
+#Practice leetcode algorithms and problems
+
 #Use this when you need both the index and the value of each element.
 nums = [6, 5, 4, 8]
 for i, num in enumerate(nums):
@@ -33,9 +35,6 @@ for i in range(len(nums)):##finding the index in the range of the length of the 
         #if you need access to the index's of a list, or change the list, or modify the list, then you use for i in (len(nums)). if you only need access to the values of a list
         #then use for i in nums
 #end of two sum
-
-
-
 
 #list practice
 nums = [6, 5, 4, 8] ##program that takes a list of nums, and outputs how many numbers in that list are less than each number. Ex: in this list right here,

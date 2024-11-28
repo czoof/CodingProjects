@@ -1,3 +1,9 @@
+# Description: This program is the same as CarAuction.py but now has a GUI
+# This program simulates an auction where three contestants (Joe, Mike, and Nick) bid on cars.
+# Each car has a starting price, and the bidding continues for a set time until a winner is determined for each car.
+# The highest bid wins the car, and the auction continues until all cars are sold.
+# The contestants' bids are simulated randomly, and the auction timer runs for 5 seconds for each round of bidding.
+
 import tkinter as tk
 import random
 
@@ -161,7 +167,7 @@ class Auction:
                 Mike.bid = self.bidLogic(price=True, startIndex=int(10) + self.car.numberOfBids, bid=random.randrange(self.car.highestBid, self.priceLogic(cappedPrice=True)))
 
             # Continue to the next round after 2 seconds
-            self.timer(2, self.updateAuction)
+            self.timer(3, self.updateAuction)
 
     def startAuction(self):  # Method to start the auction
         self.auctionLabel.config(text="")  # Clear the winner message immediately

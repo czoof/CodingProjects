@@ -1,3 +1,9 @@
+# This program creates a color guessing game using the tkinter library for the graphical user interface (GUI). 
+# The game involves the user selecting a color, and the computer attempts to guess the color. 
+# If the computer guesses correctly, the user loses all points. 
+# If the computer guesses incorrectly, the user earns points and can choose to continue playing or quit (You can risk gaining more points, or leave with the points you recieved).
+# The game uses a countdown timer to close automatically after a specified time if the computer guesses correctly.
+
 import tkinter as tk
 import random
 
@@ -48,8 +54,8 @@ class ColorGame:
         self.quit_button = tk.Button(self.root, text="Quit", command=self.quit_game)
         self.quit_button.grid(row=2, column=1, pady=10)
 
-
     def restart_game(self):
+        # Reset game variables and UI elements
         self.user_color = None
         self.user_points = 0
         self.guessed_colors = set()
@@ -62,14 +68,17 @@ class ColorGame:
         self.cancel_timer()
 
     def enable_buttons(self):
+        # Enable color buttons
         for button in self.buttons:
             button.config(state=tk.NORMAL)
 
     def disable_buttons(self):
+        # Disable color buttons
         for button in self.buttons:
             button.config(state=tk.DISABLED)
 
     def timer(self, seconds):
+        # Countdown timer to close the game automatically
         if seconds > 0:
             self.timer_label.config(text=f"Game will automatically close in {seconds} seconds")
             self.timer_id = self.root.after(1000, self.timer, seconds - 1)
@@ -77,6 +86,7 @@ class ColorGame:
             self.quit_game()
 
     def cancel_timer(self):
+        # Cancel the countdown timer if it is running
         if self.timer_id:
             self.root.after_cancel(self.timer_id)
             self.timer_id = None
@@ -118,6 +128,7 @@ class ColorGame:
             self.yes_button.config(state=tk.ACTIVE)
 
     def quit_game(self):
+        # Close the game window
         self.root.destroy()
 
 # Create the main window and run the game

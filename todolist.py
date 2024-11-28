@@ -1,12 +1,18 @@
+# This program is a simple command-line task manager that allows users to add, remove, and mark tasks as complete.
+# It displays active and completed tasks and provides options to manage them.
+# The tasks are stored in sets to ensure that each task is unique.
+
 import sys
 
-tasks = set()
-completed = set()
+tasks = set()  # A set to store current tasks
+completed = set()  # A set to store completed tasks
 
 def display_tasks(task_set):
+    # Function to display tasks in a comma-separated string format
     return ', '.join(task_set) if task_set else 'None'
-def main():
 
+def main():
+    # Main function to display the menu and handle user input
     while True:
         print("1: Add task ")
         print("2: Remove task ")
@@ -29,8 +35,8 @@ def main():
         else:
             print("Invalid option, please try again.")
 
-
 def add_task():
+    # Function to add a task
     while True:
         a = input("Enter a task or 'b' to back ")
         if a == 'b':
@@ -49,8 +55,8 @@ def add_task():
                     print("Invalid input")
                     continue
 
-
 def current_tasks():
+    # Function to display and manage current tasks
     while True:
         print(f"Your active tasks: {display_tasks(tasks)}")
         c = input("'1' Mark a task as complete or 'b' to go back ")
@@ -77,8 +83,8 @@ def current_tasks():
                 print("Invalid Input")
                 break
 
-
 def completed_tasks():
+    # Function to display completed tasks
     while True:
         print(f"Completed tasks: {display_tasks(completed)}")
         f = input("Press 'b' to go back ")
@@ -88,8 +94,8 @@ def completed_tasks():
             print("Invalid Input")
             continue
 
-
 def remove_tasks():
+    # Function to remove tasks, either current or completed
     while True:
         print(f"Your current tasks: {display_tasks(tasks)}")
         print(f"Your completed tasks: {display_tasks(completed)}")
@@ -112,7 +118,6 @@ def remove_tasks():
                         except ValueError:
                             print("Invalid Input")
                             continue
-
                 elif h not in tasks:
                     print("This is not in the tasks")
                     continue
@@ -135,22 +140,17 @@ def remove_tasks():
                         except ValueError:
                             print("Invalid Input")
                             continue
-
                 elif j not in tasks:
                     print("This is not in the tasks")
                     continue
 
         if g == 'b':
-            print("Type a task")
             main()
-
         else:
             print("Invalid Input")
             continue
 
-
 main()
-
 
 
 

@@ -1,7 +1,14 @@
+# Description:
+# This program simulates an auction where three contestants (Joe, Mike, and Nick) bid on cars.
+# Each car has a starting price, and the bidding continues for a set time until a winner is determined for each car.
+# The highest bid wins the car, and the auction continues until all cars are sold.
+# The contestants' bids are simulated randomly, and the auction timer runs for 5 seconds for each round of bidding.
+
 import time
 import random
 import sys
 
+# Car class: Defines the attributes of a car and includes a string representation for displaying the car details.
 class Cars:
     def __init__(self, year, make, model, startingPrice, highestBid, numberOfBids, bidDecrease, winner):
         self.year = year
@@ -22,7 +29,7 @@ car2 = Cars(2015, "BMW", "M4", 20000, 0, 0, .05, "")
 car3 = Cars(2020, "Mercedes", "GT", 30000, 0, 0, .05, "")
 cars = [car1, car2, car3]
 
-# Define contestants
+# Contestants class: Defines the contestants with their name, current bid, number of cars won, and which cars they won.
 class Contestants:
     def __init__(self, name, bid, carsWon, whichCarWon):
         self.name = name
@@ -32,12 +39,13 @@ class Contestants:
     
     def __str__(self):
         return f"{self.name}:"
-        
+
+# Contestant instances
 Joe = Contestants("Joe", 0, 0, "")
 Mike = Contestants("Mike", 0, 0, "")
 Nick = Contestants("Nick", 0, 0, "")
 
-# Timer function
+# Timer function: Displays a countdown for the auction
 def timer(seconds):
     while True:
         print(f"{seconds} Seconds Remaining")
@@ -47,13 +55,12 @@ def timer(seconds):
             seconds -= 1
             time.sleep(1)
 
-# Bid logic with car parameter
+# Bid logic function: Handles the bidding logic, including random bids from each contestant
 def bidLogic(price, bid, startIndex, car):
     if price == False:
-        Joe.bid = random.randrange(car.startingPrice, car.startingPrice + priceLogic(cappedPrice=True, car=car)) #get each person's bid starting at the car's starting price
+        Joe.bid = random.randrange(car.startingPrice, car.startingPrice + priceLogic(cappedPrice=True, car=car))
         Mike.bid = random.randrange(car.startingPrice, car.startingPrice + priceLogic(cappedPrice=True, car=car))
         Nick.bid = random.randrange(car.startingPrice, car.startingPrice + priceLogic(cappedPrice=True, car=car))
-    
     else:
         chance = random.randrange(10, 100)
         if chance > startIndex:
@@ -61,7 +68,7 @@ def bidLogic(price, bid, startIndex, car):
         else:
             winner(car)
 
-# Price logic with car parameter
+# Price logic function: Calculates the price based on bid decrease and random price fluctuation
 def priceLogic(cappedPrice, car):
     price2 = True
     if True:
@@ -74,7 +81,7 @@ def priceLogic(cappedPrice, car):
             winner(car)
         return cappedPrice
 
-# Winner function with car parameter
+# Winner function: Determines the winner of the auction for each car
 def winner(car):
     if Joe.bid == car.highestBid:
         car.winner = f"Joe won the {car} for ${Joe.bid}"
@@ -112,7 +119,7 @@ def winner(car):
         time.sleep(2)
         auction()
 
-# Auction logic for each car
+# Auction logic for each car: Simulates the auction process with multiple bids and a timer countdown
 def carAuction(car):  # when the timer stops, start the first bid, then set the timer again
     bidLogic(price=False, startIndex=0, bid=random.randrange(car.highestBid, car.highestBid + 2000), car=car)
     
@@ -142,7 +149,7 @@ def carAuction(car):  # when the timer stops, start the first bid, then set the 
             Mike.bid = bidLogic(price=True, startIndex=int(10) + car.numberOfBids, bid=random.randrange(car.highestBid, priceLogic(cappedPrice=True, car=car)), car=car)
             Joe.bid = bidLogic(price=True, startIndex=int(10) + car.numberOfBids, bid=random.randrange(car.highestBid, priceLogic(cappedPrice=True, car=car)), car=car)
 
-# Main auction loop
+# Main auction loop: Starts the auction process for all cars
 def auction():
     for car in cars:
         if cars != []:
@@ -150,6 +157,7 @@ def auction():
             time.sleep(5)
             carAuction(car)     
 
+# Welcome message and starting the auction
 print(f"\nWeclome to the auction. Today we have three participants {Joe} {Mike} {Nick}")
 input("\nPress 'enter' to start...")
 auction()
