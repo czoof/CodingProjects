@@ -3,7 +3,7 @@
 
 import java.util.Scanner;
 
-public class H5B {
+public class ValidDayChecker {
     public static void main(String[] args) {
 
         // Initialize boolean flags to check validity

@@ -1,4 +1,5 @@
-//hangman project
+//hi
+//hangman
 //get word
 //make another string full of underlines eqivivlant to the length of word
 //display guess
@@ -13,7 +14,7 @@
     //loop through characters in the word and check if any of them hit
         //if find letter at index i, replace character with letter
 //end loop 2 //output guess so far
-//end loop1.
+//end loop1
 
 package hangman;
 import java.io.File; //import file class to handle file input

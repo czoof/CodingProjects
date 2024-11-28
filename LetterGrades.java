@@ -4,7 +4,7 @@
 
 import java.util.Scanner;
 
-public class P2Num1 {
+public class LetterGrades {
 
     public static void main(String[] args) {
         Scanner scnr = new Scanner(System.in);  // Create a scanner object to read user input
